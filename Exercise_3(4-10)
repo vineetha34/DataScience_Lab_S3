@@ -1,0 +1,213 @@
+#Write a Python program to plot two or more lines on same plot with suitable legends of each line.
+
+
+import matplotlib.pyplot as plt
+# line 1 points
+x1 = [10,20,30]
+y1 = [20,40,10]
+# plotting the line 1 points 
+plt.plot(x1, y1, label = "line 1")
+# line 2 points
+x2 = [10,20,30]
+y2 = [40,10,30]
+# plotting the line 2 points 
+plt.plot(x2, y2, label = "line 2")
+plt.xlabel('x - axis')
+# Set the y axis label of the current axis.
+plt.ylabel('y - axis')
+# Set a title of the current axes.
+plt.title('Two or more lines on same plot with suitable legends ')
+# show a legend on the plot
+plt.legend()
+# Display a figure.
+plt.show()
+
+
+
+
+
+#Write a Python program to create multiple plots.
+
+
+import matplotlib.pyplot as plt
+fig = plt.figure()
+fig.subplots_adjust(bottom=0.020, left=0.020, top = 0.900, right=0.800)
+
+plt.subplot(2, 1, 1)
+plt.xticks(()), plt.yticks(())
+
+plt.subplot(2, 3, 4)
+plt.xticks(())
+plt.yticks(())
+
+plt.subplot(2, 3, 5)
+plt.xticks(())
+plt.yticks(())
+
+plt.subplot(2, 3, 6)
+plt.xticks(())
+plt.yticks(())
+
+plt.show()
+
+
+
+#Consider the following data.
+#Programming languages:Java,Python,PHP,JavaScript,C#,C++, Popularity:22.2,17.6,8.8,8,77,6.7
+#Write a Python programming to display a bar chart of the popularity of programming Languages.
+
+
+
+import matplotlib.pyplot as plt
+x = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
+popularity = [22.2, 17.6, 8.8, 8, 77, 6.7]
+x_pos = [i for i, _ in enumerate(x)]
+
+plt.bar(x_pos, popularity, color=(0.4, 0.6, 0.8, 1.0), edgecolor='blue')
+
+plt.xlabel("Languages")
+plt.ylabel("Popularity")
+plt.title("PopularitY of Programming Language\n" + "Worldwide, Oct 2017 compared to a year ago")
+plt.xticks(x_pos, x)
+# Turn on the grid
+plt.minorticks_on()
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='red')
+# Customize the minor grid
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+plt.show()
+
+
+
+#Write a Python programming to display a horizontal bar chart of the popularity of programming Languages(Give Red colour to the bar chart).
+
+import matplotlib.pyplot as plt
+x = ['Java', 'Python', 'PHP', 'JS', 'C#', 'C++']
+popularity = [22.2, 17.6, 8.8, 8, 77, 6.7]
+x_pos = [i for i, _ in enumerate(x)]
+plt.barh(x_pos, popularity, color='red')
+plt.xlabel("Popularity")
+plt.ylabel("Languages")
+plt.title("PopularitY of Programming Language\n" + "Worldwide, Oct 2017 compared to a year ago")
+plt.yticks(x_pos, x)
+# Turn on the grid
+plt.minorticks_on()
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='red')
+# Customize the minor grid
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+plt.show()
+
+
+
+
+
+#Write a Python programming to display a bar chart of the popularity of programming Languages. Use different color for each bar.
+
+import matplotlib.pyplot as plt
+x = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
+popularity = [22.2, 17.6, 8.8, 8, 77, 6.7]
+x_pos = [i for i, _ in enumerate(x)]
+
+plt.bar(x_pos, popularity, color=['red', 'black', 'green', 'blue', 'yellow', 'cyan'])
+
+plt.xlabel("Languages")
+plt.ylabel("Popularity")
+plt.title("PopularitY of Programming Language\n" + "Worldwide, Oct 2017 compared to a year ago")
+plt.xticks(x_pos, x)
+# Turn on the grid
+plt.minorticks_on()
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='red')
+# Customize the minor grid
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+plt.show()
+
+
+
+
+#Write a Python program to create bar plot of scores by group and gender. Use multiple X values on the same chart for men and women.Sample Data:Means (men) = (22, 30, 35, 35, 26)Means (women) = (25, 32, 30, 35, 29)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# data to plot
+n_groups = 5
+men_means = (22, 30, 35, 35, 26)
+women_means = (25, 32, 30, 35, 29)
+
+# create plot
+fig, ax = plt.subplots()
+index = np.arange(n_groups)
+bar_width = 0.35
+opacity = 0.8
+
+rects1 = plt.bar(index, men_means, bar_width,
+alpha=opacity,
+color='g',
+label='Men')
+
+rects2 = plt.bar(index + bar_width, women_means, bar_width,
+alpha=opacity,
+color='r',
+label='Women')
+plt.xlabel('Person')
+plt.ylabel('Scores')
+plt.title('Scores by person')
+plt.xticks(index + bar_width, ('G1', 'G2', 'G3', 'G4', 'G5'))
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+
+
+
+#Write a Python programming to create a pie chart of the popularity of programming Languages.Programming languages:Java,Python,PHP,JavaScript,C#,C++,Popularity:22.2,17.6,8.8,8,77,6.7
+
+import matplotlib.pyplot as plt
+# Data to plot
+languages = 'Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++'
+popuratity = [22.2, 17.6, 8.8, 8, 77, 6.7]
+colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
+# explode 1st slice
+explode = (0.1, 0, 0, 0,0,0)  
+# Plot
+plt.pie(popuratity, explode=explode, labels=languages, colors=colors,
+autopct='%1.1f%%', shadow=True, startangle=140)
+
+plt.axis('equal')
+plt.show()
+
+
+
+#Write a Python program to draw a scatter plot comparing two subject marks of Mathematics and Science. Use marks of 10 students.Sample data:Test Data:math_marks = [88, 92, 80, 89, 100, 80, 60, 100, 80, 34],science_marks = [35, 79, 79, 48, 100, 88, 32, 45, 20, 30],marks_range = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+import matplotlib.pyplot as plt
+import pandas as pd
+math_marks = [88, 92, 80, 89, 100, 80, 60, 100, 80, 34]
+science_marks = [35, 79, 79, 48, 100, 88, 32, 45, 20, 30]
+marks_range = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+plt.scatter(marks_range, math_marks, label='Math marks', color='r')
+plt.scatter(marks_range, science_marks, label='Science marks', color='g')
+plt.title('Scatter Plot')
+plt.xlabel('Marks Range')
+plt.ylabel('Marks Scored')
+plt.legend()
+plt.show()
+
+
+
+#Write a Python programming to create a pie chart of gold medal achievements of five most successful countries in 2016 Summer Olympics. Read the data from a csv file.Sample data:medal.csvcountry,gold_medal,United States,46,Great Britain,27,China,26,Russia,19,Germany,17
+
+import matplotlib.pyplot as plt
+import pandas as pd
+df =  pd.read_csv('medal.csv')
+country_data = df["country"]
+medal_data = df["gold_medal"]
+colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#8c564b"]
+explode = (0.1, 0, 0, 0, 0)  
+plt.pie(medal_data, labels=country_data, explode=explode, colors=colors,
+autopct='%1.1f%%', shadow=True, startangle=140)
+plt.title("Gold medal achievements of five most successful\n"+"countries in 2016 Summer Olympics")
+plt.show()
+
+
+
